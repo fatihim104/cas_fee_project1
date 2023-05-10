@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAS Todo Project</title>
+  </head>
+  <body>
+    <main>
+      <section id="form_section">
+        <form action="">
+          <label for="title">Title</label>
+          <input type="text" />
+
+          <label for="importance">Importance</label>
+          <input type="number" />
+
+          <label for="title">Due Date</label>
+          <input type="date" />
+
+          <input type="checkbox" /><label for="">Finished</label>
+
+          <label for="title">Title</label>
+          <input type="text" />
+
+          <label for="description">Description</label>
+          <textarea rows="4" cols="50" name="description" form="todo_form">
+            Enter text here...
+          </textarea>
+        </form>
+      </section>
+      <section id="list_section">
+        <article id="create_toggle_buttons">
+          <button>Create new todo</button>
+          <button>Toggle Style</button>
+        </article>
+        <article id="filter_buttons">
+          <button>Name</button>
+          <button>By Due Date</button>
+          <button>By Creation Date</button>
+          <button>By Importance Date</button>
+          <button>Filter Completed</button>
+        </article>
+        <article>
+          <ul>
+            <li>
+              <div>
+                <div>
+                  <span>in a day</span>
+                  <span>Title</span>
+                  <span>*****</span>
+                </div>
+                <div>
+                  <form action="">
+                    <input type="checkbox" /><label for="">Open</label>
+                  </form>
+                  <p>Description of Todo......</p>
+                </div>
+              </div>
+              <button>Edit</button>
+            </li>
+
+            <li>
+                <div>
+                  <div>
+                    <span>in a day</span>
+                    <span>Title</span>
+                    <span>*****</span>
+                  </div>
+                  <div>
+                    <form action="">
+                      <input type="checkbox" /><label for="">Open</label>
+                    </form>
+                    <p>Description of Todo......</p>
+                  </div>
+                </div>
+                <button>Edit</button>
+              </li>
+
+              <li>
+                <div>
+                  <div>
+                    <span>in a day</span>
+                    <span>Title</span>
+                    <span>*****</span>
+                  </div>
+                  <div>
+                    <form action="">
+                      <input type="checkbox" /><label for="">Open</label>
+                    </form>
+                    <p>Description of Todo......</p>
+                  </div>
+                </div>
+                <button>Edit</button>
+              </li>
+          </ul>
+          <article id="update_overwiev_buttons">
+            <button>Update</button>
+            <button>Update & Overwiev</button>
+            <button>Overwiev</button>
+          </article>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
