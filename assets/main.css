@@ -1,0 +1,106 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    display:flex;
+    height: 80vh;
+}
+
+#form_section{
+    flex:40%;
+    padding: 1%;
+}
+
+#list_section{
+    height: 100%;
+    flex:60%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+}
+
+button{
+    background-color: rgb(43, 91, 163);
+    color: whitesmoke;
+    font-size:medium;
+    line-height: 1,5rem;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 5px;
+    margin: 3px 6px;
+}
+
+button:hover{
+    background-color: rgb(95, 95, 235);
+    cursor: pointer;
+}
+
+input{
+    height: 2rem;
+}
+
+.input{
+    display: block;
+    width: 100%;
+    border: 1px solid rgb(19, 171, 90);
+    border-radius: 5px;
+    margin-top: 1%;
+}
+
+
+input[type='checkbox'] {
+    display: inline;
+    height: auto;
+    border: none;
+    margin-top:0%;
+}
+
+.input:focus{
+    outline: none;
+    border:2px solid cadetblue;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+li{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid rgb(41, 38, 38);
+}
+
+li>div{
+    flex:95%;
+    line-height: 3rem;
+}
+
+li>button{
+    flex:5%;
+}
+
+#create_toggle_buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+#filter_buttons{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+
+}
+
+.todo-item{
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr;
+}
