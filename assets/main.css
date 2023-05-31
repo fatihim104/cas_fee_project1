@@ -1,7 +1,27 @@
+:root {
+    --background:#e3e3e3;
+    --color: #222;
+    --button-background: rgb(43, 91, 163);
+    --transition-function: ease-in-out;
+    --transition-duration: 0.6s;
+}
+
+.dark-theme {
+    transition: all var(--transition-duration) var(--transition-function);
+    --background: #222;
+    --color: white;
+}
+
 *{
     margin:0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body{
+    transition: all var(--transition-duration) var(--transition-function);
+    background: var(--background);
+    color: var(--color)
 }
 
 main{
@@ -31,7 +51,7 @@ form{
 }
 
 button{
-    background-color: rgb(43, 91, 163);
+    background-color: var(--button-background);
     color: whitesmoke;
     font-size:medium;
     line-height: 1,5rem;
@@ -77,7 +97,7 @@ li{
     display: flex;
     width: 100%;
     align-items: center;
-    border-bottom: 1px solid rgb(41, 38, 38);
+    border-bottom: 1px solid var(--color);
 }
 
 li>div{
