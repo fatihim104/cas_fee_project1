@@ -124,3 +124,8 @@ li>button{
     display: grid;
     grid-template-columns: 2fr 4fr 1fr;
 }
+
+[checked=true] {
+    outline: 10px black solid;
+    color: aqua;
+}

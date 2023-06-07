@@ -1,129 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>CAS Todo Project</title>
-        <link rel="stylesheet" href="./assets/main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAS Todo Project</title>
+    <link rel="stylesheet" href="./assets/main.css" />
+  </head>
+  <body>
+    <main>
+      <section id="form_section">
+        <form action="" id="form">
+          <div>
+            <label for="title">Title</label>
+            <input id="title" class="input" type="text" />
+          </div>
 
-    </head>
-    <body>
-        <main>
-            <section id="form_section">
-                <form action="">
-                    <div>
-                        <label for="title">Title</label>
-                        <input class="input" type="text"/>
-                    </div>
+          <div>
+            <label for="importance">Importance</label>
+            <input
+              class="input"
+              id="importance"
+              type="number"
+              min="1"
+              max="5"
+            />
+          </div>
 
-                    <div>
-                        <label for="importance">Importance</label>
-                        <input class="input" type="number" max="5"/>
-                    </div>
+          <div>
+            <label for="due-date">Due Date</label>
+            <input class="input" id="duedate" type="date" />
+          </div>
 
-                    <div>
-                        <label for="title">Due Date</label>
-                        <input class="input" type="date"/>
-                    </div>
+          <div>
+            <input type="checkbox" id="checked" />
+            <label for="">Finished</label>
+          </div>
 
-                    <div>
-                        <input type="checkbox"/>
-                        <label for="">Finished</label>
-                    </div>
+          <div>
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              class="input"
+              rows="4"
+              cols="50"
+              name="description"
+              form="todo_form"
+            >
+            </textarea>
+          </div>
 
-                    <div>
-                        <label for="description">Description</label>
-                        <textarea class="input" rows="4" cols="50" name="description" form="todo_form">
-                            Enter text here...
-                        </textarea>
-                    </div>
+          <div id="update_overwiev_buttons">
+            <button id="create" type="submit">Create</button>
+            <button id="create_overwiev">Create & Overwiev</button>
+            <button>Overwiev</button>
+          </div>
+        </form>
+      </section>
 
-                    <div id="update_overwiev_buttons">
-                        <button>Create</button>
-                        <button>Create & Overwiev</button>
-                        <button>Overwiev</button>
-                    </div>
-                </form>
-            </section>
+      <section id="list_section">
+        <div>
+          <article id="create_toggle_buttons">
+            <button>Create new todo</button>
+            <button id="theme-button">Dark</button>
+          </article>
 
-            <section id="list_section">
-                <div>
-                    <article id="create_toggle_buttons">
-                        <button>Create new todo</button>
-                        <button  id="theme-button">Dark</button>
-                    </article>
+          <article id="filter_buttons">
+            <div>
+              <button>Name</button>
+              <button>By Due Date</button>
+              <button>By Creation Date</button>
+              <button>By Importance Date</button>
+            </div>
+            <div>
+              <button>Filter Completed</button>
+            </div>
+          </article>
+        </div>
 
-                    <article id="filter_buttons">
-                      <div>
-                        <button>Name</button>
-                        <button>By Due Date</button>
-                        <button>By Creation Date</button>
-                        <button>By Importance Date</button>
-                      </div>
-                      <div>
-                        <button>Filter Completed</button>
-                      </div>
-                    </article>
-                </div>
+        <div>
+          <ul id="todo-items"></ul>
+        </div>
+      </section>
+    </main>
 
-                <div>
-                    <ul>
-                        <li>
-                            <div>
-                                <div class="todo-item">
-                                    <span>in a day</span>
-                                    <span>Title</span>
-                                    <span>*****</span>
-                                </div>
-                                <div class="todo-item" >
-                                  <div>
-                                      <input type="checkbox"/><label for="">Open</label>
-                                  </div>
-                                  <p>Description of Todo......</p>
-                              </div>
-                            </div>
-                            <button>Edit</button>
-                        </li>
-
-                        <li>
-                            <div>
-                                <div class="todo-item">
-                                    <span>in a day</span>
-                                    <span>Title</span>
-                                    <span>*****</span>
-                                </div>
-                                <div class="todo-item" >
-                                    <div>
-                                        <input type="checkbox"/><label for="">Open</label>
-                                    </div>
-                                    <p>Description of Todo......</p>
-                                </div>
-                            </div>
-                            <button>Edit</button>
-                        </li>
-
-                        <li>
-                            <div>
-                                <div class="todo-item">
-                                    <span>in a day</span>
-                                    <span>Title</span>
-                                    <span>*****</span>
-                                </div>
-                                <div class="todo-item" >
-                                  <div>
-                                      <input type="checkbox"/><label for="">Open</label>
-                                  </div>
-                                  <p>Description of Todo......</p>
-                                </div>
-                            </div>
-                            <button>Edit</button>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </main>
-
-        <script src="./assets/main.js" defer></script>
-    </body>
+    <script type="module" src="./assets/main.js">
+     import {handleEdit} from "./assets/function.js";
+     window.handleEdit = handleEdit;
+    </script>
+  </body>
 </html>
