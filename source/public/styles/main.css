@@ -26,18 +26,26 @@ body{
 
 main{
     display:flex;
-    height: 80vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    width: 100vw;
+    padding-bottom: 2rem;
 }
 
 #form_section{
+    width: 60%;
+    /* height: 50%; */
     flex:40%;
-    padding: 1%;
+    padding: 5%;
+    display: none;
 }
 
 #list_section{
-    height: 100%;
-    flex:60%;
-    padding: 1%;
+    height: 70%;
+    /* flex:60%; */
+    padding: 5%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -47,7 +55,7 @@ form{
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content:space-around;
+    justify-content:space-evenly;
 }
 
 button{

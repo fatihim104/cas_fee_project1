@@ -1,0 +1,26 @@
+
+  {{#each taskList}}
+  <li>
+    <div>
+      <div class="todo-item">
+        <span>{{this.due_date}}</span>
+        <span>{{this.title}}</span>
+        <span>{{this.importance}}</span>
+      </div>
+      <div class="todo-item">
+        <div>
+          {{#if this.isCompleted}}
+            <input type="checkbox" disabled="disabled" checked/><label for="">Complete</label>
+          {{else}}
+            <input type="checkbox" disabled="disabled" /><label for="">Open</label>
+          {{/if}}
+        </div>
+        <p>{{this.description}}</p>
+      </div>
+    </div>
+    <button data-id="{{this.id}}" onclick="handleEdit('{{this.id}}')">Edit</button>
+  </li>
+{{/each}}
+
+
+

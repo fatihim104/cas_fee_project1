@@ -5,15 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CAS Todo Project</title>
-    <link rel="stylesheet" href="./assets/main.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" defer></script>
+  
+    <!-- <script id="my-templete" src="./scripts/taskListTemplate.hbs" type="text/x-handlebars-template"></script> -->
+
+    <script id="todo-list-templete" type="text/x-handlebars-template">
+     {{#each taskList}}
+        <li>
+          <div>
+              <div class="todo-item">
+                  <span>{{this.due_date}}</span>
+                  <span>{{this.title}}</span>
+                  <span>{{this.importance}}</span>
+              </div>
+              <div class="todo-item" >
+                <div>
+                  {{#if this.isCompleted}}
+                    <input type="checkbox" disabled="disabled" checked/><label for="">Complete</label>
+                  {{else}}
+                    <input type="checkbox" disabled="disabled" /><label for="">Open</label>
+                  {{/if}}
+                </div>
+                <p>{{this.description}}</p>
+            </div>
+          </div>
+          <button data-id="{{this.id}}" >Edit</button>
+        </li>
+      {{/each}}
+    </script>
   </head>
   <body>
     <main>
       <section id="form_section">
-        <form action="" id="form">
+        <form action="" id="form-element">
           <div>
             <label for="title">Title</label>
-            <input id="title" class="input" type="text" />
+            <input id="title" class="input" type="text" required/>
           </div>
 
           <div>
@@ -24,12 +52,13 @@
               type="number"
               min="1"
               max="5"
+              required
             />
           </div>
 
           <div>
             <label for="due-date">Due Date</label>
-            <input class="input" id="duedate" type="date" />
+            <input class="input" id="duedate" type="date" required/>
           </div>
 
           <div>
@@ -52,8 +81,8 @@
 
           <div id="update_overwiev_buttons">
             <button id="create" type="submit">Create</button>
-            <button id="create_overwiev">Create & Overwiev</button>
-            <button>Overwiev</button>
+            <button id="create_overwiev" type="button">Create & Overwiev</button>
+            <button id="overwiev" type="button">Overwiev</button>
           </div>
         </form>
       </section>
@@ -61,8 +90,8 @@
       <section id="list_section">
         <div>
           <article id="create_toggle_buttons">
-            <button>Create new todo</button>
-            <button id="theme-button">Dark</button>
+            <button id="create-button">Create new todo</button>
+            <button id="theme-button">Theme</button>
           </article>
 
           <article id="filter_buttons">
@@ -84,9 +113,6 @@
       </section>
     </main>
 
-    <script type="module" src="./assets/main.js">
-     import {handleEdit} from "./assets/function.js";
-     window.handleEdit = handleEdit;
-    </script>
+    <script type="module" src="./scripts/main.js" defer></script>
   </body>
 </html>
