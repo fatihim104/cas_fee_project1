@@ -1,16 +1,17 @@
-import taskModel from "./data/taskModel.js";
+import {tasks, sortByUp,sortByDown } from "./data/taskModel.js";
 
 import {
   formSection, 
   listSection,
   form,
-  formButtons,
   overviewButton,
   createOverwievButton,
   themeButton,
   taskListElement,
   templateSource,
   showFormButton,
+  sortButtons,
+  filterButton,
   title,
   description,
   duedate,
@@ -18,7 +19,7 @@ import {
   checked
 } from "./dom.js";
 
-renderTasks();
+renderTasks(tasks);
 
 let isEditing = false;
 let editingIndex;
@@ -45,9 +46,44 @@ createOverwievButton.addEventListener("click", () =>{
   showList()
 })
 
-function renderTasks() {
+let filtered=false;
+filterButton.addEventListener("click", () => {
+  filtered ? filtered=false : filtered=true;
+  const completedTasks=tasks.filter(task => task.isCompleted)
+  filtered ? renderTasks(completedTasks) : renderTasks(tasks)
+})
+
+
+let previousButtonId = null;
+sortButtons.addEventListener("click", (event) => {
+  const buttonId= event.target.id;
+  const button= event.target;
+  const sortCriter= event.target.dataset.sort;
+
+  if(event.target.matches("button")){
+        if (button.classList.contains('down')) {
+          button.classList.remove('down');
+          button.classList.add('up');
+          renderTasks(sortByUp(tasks, sortCriter))
+          
+      } else {
+          button.classList.remove('up');
+          button.classList.add('down');
+          renderTasks(sortByDown(tasks, sortCriter))
+      }
+
+      if (previousButtonId !== null && previousButtonId !== buttonId) {
+          let previousButton = document.getElementById(previousButtonId);
+          previousButton.classList.remove('up');
+          previousButton.classList.remove('down');
+      }
+      previousButtonId = buttonId;
+  }
+})
+
+function renderTasks(ptasks) {
   const template = Handlebars.compile(templateSource);
-  const dynamicHTML = template({taskList:taskModel.tasks})
+  const dynamicHTML = template({taskList:ptasks})
   taskListElement.innerHTML = dynamicHTML;
 }
 
@@ -58,7 +94,7 @@ function submitForm(event) {
 }
 
 function updateTask(pEditingIndex) {
-  let editedTask = taskModel.tasks[pEditingIndex]
+  let editedTask = tasks[pEditingIndex]
   console.log(editedTask)
     
   const newTask = {
@@ -74,7 +110,7 @@ function updateTask(pEditingIndex) {
       importance.value !== "" &&
       description.value !== ""
   ){
-      taskModel.tasks[pEditingIndex] = newTask;
+      tasks[pEditingIndex] = newTask;
       isEditing=false;
       pEditingIndex = "";
       changeTextToCreate()
@@ -92,10 +128,10 @@ function handleEdit (pId){
   changeTextToUpdate()
   console.log("secilen id", pId)
  
-  editingIndex = taskModel.tasks.findIndex((task) => task.id == pId);
+  editingIndex = tasks.findIndex((task) => task.id == pId);
   console.log("datadaki index", editingIndex)
 
-  let editedTask = taskModel.tasks[editingIndex]
+  let editedTask = tasks[editingIndex]
 
   title.value = editedTask.title;
   importance.value = editedTask.importance;
@@ -120,7 +156,7 @@ function createATask() {
       description: description.value,
     };
     taskModel.tasks.push(newTask) 
-    renderTasks()
+    renderTasks(tasks)
   }else {
     alert("please fill out fields");
   } 

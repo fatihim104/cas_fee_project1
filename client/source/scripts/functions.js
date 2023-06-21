@@ -18,4 +18,4 @@ function handleEdit (id){
   
 }
 
-export { createTasksHtml, handleEdit };
+export { handleEdit };

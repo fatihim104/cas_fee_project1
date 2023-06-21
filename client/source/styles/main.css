@@ -122,10 +122,9 @@ li>button{
     justify-content: space-between;
 }
 
-#filter_buttons{
+#sort_filter_buttons{
     display: grid;
     grid-template-columns: 4fr 1fr;
-
 }
 
 .todo-item{
@@ -136,4 +135,12 @@ li>button{
 [checked=true] {
     outline: 10px black solid;
     color: aqua;
+}
+
+button.down:after {
+    content: '\25BD';
+}
+
+button.up:after {
+    content: '\25B3';
 }

@@ -33,6 +33,9 @@
           <button data-id="{{this.id}}" >Edit</button>
         </li>
       {{/each}}
+      {{#unless taskList.length}}
+      No task found.
+      {{/unless}}
     </script>
   </head>
   <body>
@@ -90,19 +93,19 @@
       <section id="list_section">
         <div>
           <article id="create_toggle_buttons">
-            <button id="create-button">Create new todo</button>
-            <button id="theme-button">Theme</button>
+            <button id="create-button" type="button">Create new todo</button>
+            <button id="theme-button" type="button">Theme</button>
           </article>
 
-          <article id="filter_buttons">
-            <div>
-              <button>Name</button>
-              <button>By Due Date</button>
-              <button>By Creation Date</button>
-              <button>By Importance Date</button>
+          <article id="sort_filter_buttons">
+            <div id="sort_buttons">
+              <button id="sort-button-name" data-sort="title" type="button">Name</button>
+              <button id="sort-button-due" data-sort="due_date" type="button">By Due Date</button>
+              <button id="sort-button-creation" data-sort="creation_date" type="button">By Creation Date</button>
+              <button id="sort-button-importance" data-sort="importance" type="button">By Importance Date</button>
             </div>
             <div>
-              <button>Filter Completed</button>
+              <button id="filter-button" type="button">Filter Completed</button>
             </div>
           </article>
         </div>
