@@ -19,9 +19,6 @@ export class TodoService {
 
     async getAll(req) {
         const {sort, filter, direction} = req.query
-        console.log(sort)
-        console.log(filter)
-        console.log(direction)
         const isCompleted=filter === "true";
         if(isCompleted){
             return this.db.find({ isCompleted:false}).sort({[sort]:direction} ).exec();
@@ -42,20 +39,7 @@ export class TodoService {
     }
 
     async update(id, body) {
-        return this.db.update({_id: id}, {$set: {...body, updateDate: new Date() },  $unset: { creationDate: '' }});
-    }
-
-    async sortByUp(query) {
-        return this.db.find({}).sort( { [query]: 1 }).exec();
-    }
-
-    async sortByDown(query) {
-        return this.db.find({}).sort( { [query]: -1 }).exec();
-    }
-
-    async filter(query) {
-        const isCompleted=query === "true";
-        return this.db.find({isCompleted:isCompleted }).exec();
+        return this.db.update({_id: id}, {$set: {...body, updateDate: new Date() }});
     }
 }
 

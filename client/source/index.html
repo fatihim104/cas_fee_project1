@@ -6,35 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CAS Todo Project</title>
     <link rel="stylesheet" href="./styles/main.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" defer></script>
-  
-    <!-- <script id="my-templete" src="./scripts/taskListTemplate.hbs" type="text/x-handlebars-template"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" defer ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
     <script id="todo-list-templete" type="text/x-handlebars-template">
-     {{#each taskList}}
+      {{#each taskList}}
         <li>
           <div>
-              <div class="todo-item">
-                  <span>{{this.due_date}}</span>
-                  <span>{{this.title}}</span>
-                  <span>{{this.importance}}</span>
+            <div class="todo-item">
+              {{#isEqual this.due_date ""}}
+              <span>Some day</span>
+            {{else}}
+              <span><span>{{{daysRemaining this.due_date}}}</span>
+            </span>
+            {{/isEqual}}
+              <span>{{this.title}}</span>
+              {{{LightningIcon this.importance}}}
+            </div>
+            <div class="todo-item">
+              <div>
+                {{#if this.isCompleted}}
+                  <input type="checkbox" disabled="disabled" checked /><label
+                    for=""
+                  >Complete</label>
+                {{else}}
+                  <input type="checkbox" disabled="disabled" /><label
+                    for=""
+                  >Open</label>
+                {{/if}}
               </div>
-              <div class="todo-item" >
-                <div>
-                  {{#if this.isCompleted}}
-                    <input type="checkbox" disabled="disabled" checked/><label for="">Complete</label>
-                  {{else}}
-                    <input type="checkbox" disabled="disabled" /><label for="">Open</label>
-                  {{/if}}
-                </div>
-                <p>{{this.description}}</p>
+              <p>{{this.description}}</p>
             </div>
           </div>
-          <button data-id="{{this._id}}" >Edit</button>
+          <button data-id="{{this._id}}">Edit</button>
         </li>
       {{/each}}
       {{#unless taskList.length}}
-      No task found.
+        No task found.
       {{/unless}}
     </script>
   </head>
@@ -44,7 +52,7 @@
         <form action="" id="form-element">
           <div>
             <label for="title">Title</label>
-            <input id="title" class="input" type="text" required/>
+            <input id="title" class="input" type="text" required />
           </div>
 
           <div>
@@ -61,7 +69,7 @@
 
           <div>
             <label for="due-date">Due Date</label>
-            <input class="input" id="duedate" type="date" required/>
+            <input class="input" id="duedate" type="date" />
           </div>
 
           <div>
@@ -84,7 +92,9 @@
 
           <div id="update_overwiev_buttons">
             <button id="create" type="submit">Create</button>
-            <button id="create_overwiev" type="button">Create & Overwiev</button>
+            <button id="create_overwiev" type="button">
+              Create & Overwiev
+            </button>
             <button id="overwiev" type="button">Overwiev</button>
           </div>
         </form>
@@ -99,10 +109,26 @@
 
           <article id="sort_filter_buttons">
             <div id="sort_buttons">
-              <button id="sort-button-name" data-sort="title" type="button">Name</button>
-              <button id="sort-button-due" data-sort="due_date" type="button">By Due Date</button>
-              <button id="sort-button-creation" data-sort="creationDate" type="button">By Creation Date</button>
-              <button id="sort-button-importance" data-sort="importance" type="button">By Importance</button>
+              <button id="sort-button-name" data-sort="title" type="button">
+                Name
+              </button>
+              <button id="sort-button-due" data-sort="due_date" type="button">
+                By Due Date
+              </button>
+              <button
+                id="sort-button-creation"
+                data-sort="creationDate"
+                type="button"
+              >
+                By Creation Date
+              </button>
+              <button
+                id="sort-button-importance"
+                data-sort="importance"
+                type="button"
+              >
+                By Importance
+              </button>
             </div>
             <div>
               <button id="filter-button" type="button">Filter Completed</button>
@@ -116,7 +142,7 @@
       </section>
     </main>
 
-    <script type="module" src="./scripts/controller/todoController.js" defer></script>
-    <!-- <script type="module" src="./scripts/main.js" defer></script> -->
+    <script type="module" src="./scripts/controller/todoController.js" defer ></script>
+    <script type="module" src="./scripts/service/util.js" defer ></script>
   </body>
 </html>

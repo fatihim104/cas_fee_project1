@@ -5,37 +5,24 @@ export class TodoService {
     this.todo = todo;
   }
 
-  
   async loadData(pCriteria) {
-   const data = await this.todo.get(pCriteria);
-   return data
+    const data = await this.todo.get(pCriteria);
+    console.log(data)
+    return data;
   }
 
   async getTaskById(pId) {
     const task = await this.todo.getbyId(pId);
-    return task
+    return task;
   }
 
   async createATask(pNewTask) {
-    const createdData = await this.todo.create(pNewTask)
+    const createdData = await this.todo.create(pNewTask);
     return createdData;
   }
 
   async updateTask(pId, pUpdatedTask) {
-    await this.todo.update(pId, pUpdatedTask)
-
-  }
-
-  async sortUpByCriteria(pCriteria) {
-    return await this.todo.sortUp(pCriteria)
-  }
-
-  async sortDownByCriteria(pCriteria) {
-    return await this.todo.sortDown(pCriteria)
-  }
-  
-  async filterByCompleted(pCriteria) {
-    return await this.todo.filter(pCriteria)
+    await this.todo.update(pId, pUpdatedTask);
   }
 }
 

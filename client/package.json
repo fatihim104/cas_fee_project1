@@ -5,6 +5,7 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
+    "start": "node index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,6 @@
   "homepage": "https://github.com/fatihim104/cas_fee_project1#readme",
   "dependencies": {
     "handlebars": "^4.7.7",
-    "uuid": "^9.0.0"
+    "moment": "^2.29.4"
   }
 }
