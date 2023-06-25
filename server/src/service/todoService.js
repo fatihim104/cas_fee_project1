@@ -13,12 +13,21 @@ export class Todo {
 
 export class TodoService {
     constructor(db) {
-        const options = this.db = db || new Datastore({filename: './data/orders.db', autoload: true});
+        const options = this.db = db || new Datastore({filename: './data/todos.db', autoload: true});
         this.db = db || new Datastore(options);
     }
 
-    async getAll() {
-        return this.db.find({}).sort({ creationDate: -1 }).exec();
+    async getAll(req) {
+        const {sort, filter, direction} = req.query
+        console.log(sort)
+        console.log(filter)
+        console.log(direction)
+        const isCompleted=filter === "true";
+        if(isCompleted){
+            return this.db.find({ isCompleted:false}).sort({[sort]:direction} ).exec();
+        }else{
+            return this.db.find({}).sort({[sort]:direction} ).exec();
+        }
     }
 
     async add(title, importance, due_date, isCompleted, description) {

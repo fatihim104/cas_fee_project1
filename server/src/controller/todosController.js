@@ -3,7 +3,7 @@ import { todoService } from "../service/todoService.js";
 export class TodosController {
 
     getTodos = async (req, res) => {
-        res.json((await todoService.getAll(req.body)))
+        res.json((await todoService.getAll(req)))
     };
 
     getById = async (req, res) => {

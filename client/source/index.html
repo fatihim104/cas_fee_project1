@@ -30,7 +30,7 @@
                 <p>{{this.description}}</p>
             </div>
           </div>
-          <button data-id="{{this.id}}" >Edit</button>
+          <button data-id="{{this._id}}" >Edit</button>
         </li>
       {{/each}}
       {{#unless taskList.length}}
@@ -101,8 +101,8 @@
             <div id="sort_buttons">
               <button id="sort-button-name" data-sort="title" type="button">Name</button>
               <button id="sort-button-due" data-sort="due_date" type="button">By Due Date</button>
-              <button id="sort-button-creation" data-sort="creation_date" type="button">By Creation Date</button>
-              <button id="sort-button-importance" data-sort="importance" type="button">By Importance Date</button>
+              <button id="sort-button-creation" data-sort="creationDate" type="button">By Creation Date</button>
+              <button id="sort-button-importance" data-sort="importance" type="button">By Importance</button>
             </div>
             <div>
               <button id="filter-button" type="button">Filter Completed</button>
@@ -116,6 +116,7 @@
       </section>
     </main>
 
-    <script type="module" src="./scripts/main.js" defer></script>
+    <script type="module" src="./scripts/controller/todoController.js" defer></script>
+    <!-- <script type="module" src="./scripts/main.js" defer></script> -->
   </body>
 </html>

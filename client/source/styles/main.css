@@ -144,3 +144,11 @@ button.down:after {
 button.up:after {
     content: '\25B3';
 }
+
+.up, .down{
+    background-color : rgb(5, 5, 122);
+}
+
+.dark-filter{
+    background-color : rgb(5, 5, 122);
+}

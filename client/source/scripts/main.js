@@ -1,4 +1,4 @@
-import {tasks, sortByUp,sortByDown } from "./data/taskModel.js";
+import { sortByUp,sortByDown } from "./data/todoModel.js";
 
 import {
   formSection, 
@@ -19,7 +19,7 @@ import {
   checked
 } from "./dom.js";
 
-renderTasks(tasks);
+renderTasks();
 
 let isEditing = false;
 let editingIndex;
@@ -73,7 +73,7 @@ sortButtons.addEventListener("click", (event) => {
       }
 
       if (previousButtonId !== null && previousButtonId !== buttonId) {
-          let previousButton = document.getElementById(previousButtonId);
+          const previousButton = document.getElementById(previousButtonId);
           previousButton.classList.remove('up');
           previousButton.classList.remove('down');
       }
@@ -86,7 +86,6 @@ function renderTasks(ptasks) {
   const dynamicHTML = template({taskList:ptasks})
   taskListElement.innerHTML = dynamicHTML;
 }
-
 
 function submitForm(event) {
   event.preventDefault();
